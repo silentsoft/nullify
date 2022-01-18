@@ -4,7 +4,7 @@
 A semantic emptiness is a key concept used to indicate the absence of a value.
 Even if an object is not actually referenced as `null`, it can be considered `null` if it is semantically filled with empty values.
 
-### In the beginning there was ...
+### In the beginning there was...
 You had to convert an empty value to `null` to persist it in a database.
 Also you had to convert `null` to an empty string to display it in a GUI or something elsewhere like Stream or Writer.
 If you don't want to use `null` at all, you had to write a code to getting default value/object. like this:
@@ -41,7 +41,7 @@ if (collection == null || collection.size() <= 0) {
 } else {
     boolean isSemanticallyEmpty = true;
     for (String value : collection) {
-        if (value == null || value.length() <= 0) {
+        if (value != null && value.length() > 0) {
             isSemanticallyEmpty = false;
             break;
         }
