@@ -1,0 +1,22 @@
+language: java
+
+git:
+  depth: false
+
+cache:
+  directories:
+  - "$HOME/.m2"
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=silentsoft_nullify
+
+addons:
+  sonarcloud:
+    organization: "silentsoft"
+    token:
+      secure: "RrzyO2nrzJgzlx8YIl+qzJx8W0Gle26DWwODHR36zgNP+Gy+k4dbd03JaqwMhAWfpwIIJMBDvHTuAxxWldMd4a5CtTeueUlLbzo+AuI001UNOFhdnLlYSh3X3EKS6vYA1hXpSPGJalpitrrERRCA2FaKa5ltimrDIkVaF7TTjX4O9iKQ2VVIn3ME7rjsFrcdyZ8Asn7qvbmuEuGtoa+mpVuGush5Br8vQagDKMWxBRtZBHZlGvSoBjdSBf1ds3v/ERotQ779F7ja2ztan6uBYcgNvLBRhuqLxLMSfX8pr5rd0g9/nBU+yGFfjRacFvjRaeEcW9pbs/DvnElG0qrfeFLzeDSv9K/ca6FgME9GzG6E8v1CDXV3i5IZqmGNc4CydtVoLFrE2XtBBYbHZxNsSSgoXZcqG3QliqJvQWdQ0nCK9AT0ko+yqVIdC7UourgN9HyGsSSuMeQ/hwfPsACF9CuTgMteNlrHlMU7MmTyLjaw0Z/AV07axQm4EKj5viI0EBHiv7IGU1usABrpmhxL0MS4M6fvwT8DdrxE2KKLNTHaGzRLoCCriBqe47XbUVI7Ncy2Vc8PabQVkxB468IIOtdaaD1KD0GtK+bB/pmgl+6npWd5UlDdzjtQ6iX66m2APk1AWOcx1/Y4Ekvn1cREh59zns55dlzaefvVoMhFQm0="
+
+notifications:
+  slack:
+    secure: "VoS00eikVfdSJLwgIs/k5d5TxCxHCTkXcBUYBztOtyj64hSM7J3hu99M+fr0lQcFUopIJ/hR0BfKogAlS/N9yNOqkoEmx4UZSQiwB2SfNC+0xI3A6jyP9WHRCSGe6T2b2j1uKwGYUYhZJOcyMUTeb7CfMdfpfD41Na9HoX9YKA8U0J77BJ8bmDwlpF1NQVbdDTD+Y2n+fu0WeK5W4+a6dz4P2m66EYd9e54cHNrvgitJA97h5L+hYnn3viq9Hkxk8purjcaS7TkaEssnlEMNhkxs3vK6waan74EfHzUTFPpysXV/GC6+onJexPpdISBo6VE2lAL4KvTbo2Af/oh0qQvIsoZCfMCTqq9W1ZR80BwWkpWuH4zSnrgq9AO3VM5fz4iQYc/WH8y2JWxzsh1FJQpo2HGsGC61qGIneHnlbwYoc7X+ks8goVWL6kqLzwAMRq6F99CVbg9+ZP04L+SW2gGWw4Yckjfygsge1xCah/s3qLEyRhg7sM4em0jNDDcl03x+eMgG1EFUsYiYwEvbWLwo6WBuuldFVH6dqnWR4SY45x3wDzWokxtesz8XTuJiC1GQScEBgG6EcC9Di874DqDbfoBdltDyTob2TnY9w20LRNgR03g4YETnopC6YdscEkJB/0WFSe/diRVtqVMeOkTQRjO7H9/ixfOWEkhKp7M="
