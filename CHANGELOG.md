@@ -1,3 +1,8 @@
+# 1.0.1 (20 Jan 2022)
+
+## Enhancements
+- Add JavaDoc comments
+
 # 1.0.0 (19 Jan 2022)
 
 ## Philosophy

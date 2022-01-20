@@ -6,7 +6,7 @@
 
     <groupId>org.silentsoft</groupId>
     <artifactId>nullify</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>Nullify</name>
     <description>Nullify for null representations and assertions of objects.</description>

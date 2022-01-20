@@ -75,7 +75,7 @@ Nullify.of(collection, Arrays.asList("default_value"));
 <dependency>
     <groupId>org.silentsoft</groupId>
     <artifactId>nullify</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
