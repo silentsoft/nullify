@@ -15,6 +15,7 @@ public class NullifyTest {
         Assertions.assertNull(Nullify.of((char) 0x00));
         Assertions.assertNull(Nullify.of('\u0000'));
         Assertions.assertNull(Nullify.of(new ArrayList<>()));
+        Assertions.assertNull(Nullify.of((Iterable<String>) () -> Arrays.asList("").iterator()));
         Assertions.assertNull(Nullify.of(new HashSet<>()));
         Assertions.assertNull(Nullify.of(new HashMap<>()));
         Assertions.assertNull(Nullify.of(new Hashtable()));
@@ -32,6 +33,8 @@ public class NullifyTest {
         Assertions.assertNotNull(Nullify.of(true));
         Assertions.assertNotNull(Nullify.of(0));
         Assertions.assertNotNull(Nullify.of(0x00));
+        Assertions.assertNotNull(Nullify.of(Arrays.asList("value")));
+        Assertions.assertNotNull(Nullify.of((Iterable<String>) () -> Arrays.asList("value").iterator()));
         Assertions.assertNotNull(Nullify.of(new int[]{0}));
         Assertions.assertNotNull(Nullify.of((long) 0x00));
         Assertions.assertNotNull(Nullify.of(new long[]{0}));
@@ -43,7 +46,9 @@ public class NullifyTest {
         Assertions.assertNotNull(Nullify.of(new short[]{0}));
         Assertions.assertNotNull(Nullify.of((byte) 0x00));
         Assertions.assertNotNull(Nullify.of(new byte[]{0}));
+        Assertions.assertNotNull(Nullify.of(new boolean[]{false}));
 
+        Assertions.assertEquals("value", Nullify.of("value", "default_value"));
         Assertions.assertEquals("default_value", Nullify.of(null, "default_value"));
     }
 
@@ -129,30 +134,29 @@ public class NullifyTest {
 
     @Test
     public void toStringTest() {
-        Assertions.assertEquals("", new StringBuilder(Nullify.of(null, "")).toString());
-        Assertions.assertEquals("", new StringBuilder(Nullify.toString(null)).toString());
+        Assertions.assertEquals("", Nullify.toString(null));
+        Assertions.assertEquals("value", Nullify.toString("value"));
+        Assertions.assertEquals("true", Nullify.toString(true));
+        Assertions.assertEquals("false", Nullify.toString(false));
+        Assertions.assertEquals("0", Nullify.toString(0));
+        Assertions.assertEquals("1", Nullify.toString(1));
+
     }
 
     @Test
     public void isNullTest() {
-        StringBuilder builder = new StringBuilder();
-        if (Nullify.isNull(null)) {
-            builder.append("it's null");
-        } else {
-            builder.append("it's not null");
-        }
-        Assertions.assertEquals("it's null", builder.toString());
+        Assertions.assertTrue(Nullify.isNull(null));
+        Assertions.assertTrue(Nullify.isNull(""));
+        Assertions.assertTrue(Nullify.isNull('\u0000'));
+        Assertions.assertFalse(Nullify.isNull(new Object()));
     }
 
     @Test
     public void isNotNullTest() {
-        StringBuilder builder = new StringBuilder();
-        if (Nullify.isNotNull(new Object())) {
-            builder.append("it's not null");
-        } else {
-            builder.append("it's null");
-        }
-        Assertions.assertEquals("it's not null", builder.toString());
+        Assertions.assertTrue(Nullify.isNotNull(new Object()));
+        Assertions.assertTrue(Nullify.isNotNull("value"));
+        Assertions.assertTrue(Nullify.isNotNull('0'));
+        Assertions.assertFalse(Nullify.isNotNull(null));
     }
 
 }
