@@ -1,7 +1,7 @@
 # Nullify
 
-![Maven Central](https://img.shields.io/maven-central/v/org.silentsoft/nullify)
-[![Build Status](https://travis-ci.com/silentsoft/nullify.svg?branch=main)](https://travis-ci.com/silentsoft/nullify)
+[![Maven Central](https://img.shields.io/maven-central/v/org.silentsoft/nullify)](https://search.maven.org/artifact/org.silentsoft/nullify)
+[![Build Status](https://app.travis-ci.com/silentsoft/nullify.svg?branch=main)](https://app.travis-ci.com/silentsoft/nullify)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_nullify&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_nullify)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_nullify&metric=coverage)](https://sonarcloud.io/dashboard?id=silentsoft_nullify)
 [![Hits](https://hits.sh/github.com/silentsoft/nullify.svg)](https://hits.sh)
