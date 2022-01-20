@@ -4,10 +4,31 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.stream.Stream;
 
+/**
+ * Nullify is a utility class for null representations and assertions of objects.
+ */
 public class Nullify {
 
     private Nullify() { }
 
+    /**
+     * Returns the object itself if it is not null nor semantically empty (empty string, empty collection, empty map, etc.) otherwise null</p>
+     * <p>Semantically empty cases are:</p>
+     * <ul>
+     *   <li>Length of {@link CharSequence} is 0</li>
+     *   <li>{@link Character} is equal to {@link Character#MIN_VALUE}</li>
+     *   <li>{@link Iterable} is empty</li>
+     *   <li>{@link Iterable} is not empty but all elements are semantically empty</li>
+     *   <li>{@link Map} is empty</li>
+     *   <li>{@link Map} is not empty but all values are semantically empty except for keys</li>
+     *   <li>Array is empty</li>
+     *   <li>Array is not empty but all elements are semantically empty</li>
+     * </ul>
+     * Note that all primitive types except {@code char} are not considered as empty even if they are equal to their default values. (e.g. {@code 0}, {@code false}, etc.)
+     *
+     * @param object the object to be checked
+     * @return null if the object is null or semantically empty, otherwise the object itself
+     */
     @SuppressWarnings("rawtypes")
     public static <T> T of(T object) {
         if (object == null) {
@@ -62,18 +83,51 @@ public class Nullify {
         return object;
     }
 
+    /**
+     * Returns the object itself if it is not null nor semantically empty (empty string, empty collection, empty map, etc.) otherwise {@code defaultValue}
+     *
+     * @param object the object to be checked
+     * @param defaultValue the default value to be returned if the object is null or semantically empty
+     * @return {@code defaultValue} if the object is null or semantically empty, otherwise the object itself
+     * @see #of(Object)
+     */
     public static <T> T of(T object, T defaultValue) {
         return isNull(object) ? defaultValue : object;
     }
 
+    /**
+     * Returns empty string if the object is null or semantically empty (empty string, empty collection, empty map, etc.) otherwise {@link Object#toString()} of the object
+     *
+     * @param object the object to be checked
+     * @return a string representation of the object
+     * @see Object#toString()
+     */
     public static <T> String toString(T object) {
         return isNull(object) ? "" : object.toString();
     }
 
+    /**
+     * Returns {@code true} if the object is null or semantically empty (empty string, empty collection, empty map, etc.) otherwise {@code false}
+     *
+     * @param object the object to be checked
+     * @return a boolean value indicating whether the object is null or semantically empty
+     * @see #isNotNull(Object)
+     * @see #of(Object)
+     * @see #of(Object, Object)
+     */
     public static <T> boolean isNull(T object) {
         return of(object) == null;
     }
 
+    /**
+     * Returns {@code true} if the object is not null and semantically not empty (not empty string, not empty collection, not empty map, etc.) otherwise {@code false}
+     *
+     * @param object the object to be checked
+     * @return a boolean value indicating whether the object is not null and not semantically empty
+     * @see #isNull(Object)
+     * @see #of(Object)
+     * @see #of(Object, Object)
+     */
     public static <T> boolean isNotNull(T object) {
         return !isNull(object);
     }
