@@ -4,7 +4,7 @@
 [![Build Status](https://app.travis-ci.com/silentsoft/nullify.svg?branch=main)](https://app.travis-ci.com/silentsoft/nullify)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_nullify&metric=alert_status)](https://sonarcloud.io/dashboard?id=silentsoft_nullify)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=silentsoft_nullify&metric=coverage)](https://sonarcloud.io/dashboard?id=silentsoft_nullify)
-[![Hits](https://hits.sh/github.com/silentsoft/nullify.svg)](https://hits.sh)
+[![Hits](https://hits.sh/github.com/silentsoft/nullify.svg)](https://hits.sh/github.com/silentsoft/nullify/)
 
 `Nullify` for null representations and assertions of objects.
 
